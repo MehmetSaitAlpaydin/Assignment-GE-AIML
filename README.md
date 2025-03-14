@@ -105,7 +105,7 @@ This saves the model as `distilbert_newsgroup_model/`.
 
 ### **3️⃣ Run the Web App Locally**
 ```bash
-python app.py
+python webapp.py
 ```
 - Open `http://127.0.0.1:5000/` in a browser.
 - Enter text, click **"Classify"**, and view predictions!
