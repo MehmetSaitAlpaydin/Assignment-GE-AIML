@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Classifier</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        input, button { padding: 10px; font-size: 16px; margin: 10px; }
+        #result { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h2>Text Classification with DistilBERT</h2>
+    <input type="text" id="userText" placeholder="Enter text here..." size="50">
+    <button onclick="getPrediction()">Classify</button>
+    <div id="result"></div>
+
+    <script>
+        function getPrediction() {
+            let userText = $("#userText").val();
+            if (userText.trim() === "") {
+                alert("Please enter some text.");
+                return;
+            }
+
+            $.ajax({
+                url: "/predict",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ text: userText }),
+                success: function(response) {
+                    let output = "<b>Prediction Results:</b><br>";
+                    response.predictions.forEach(pred => {
+                        output += `${pred.category}: ${pred.probability}%<br>`;
+                    });
+                    $("#result").html(output);
+                },
+                error: function() {
+                    $("#result").html("Error making prediction.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
