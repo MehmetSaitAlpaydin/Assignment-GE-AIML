@@ -2,7 +2,22 @@
 This project fine-tunes **DistilBERT** on the **20 Newsgroups dataset** for text classification and deploys a **Flask web application** to classify text into one of 20 categories.
 
 ## 🔹 Live Demo on Colab
-Test the project in **Google Colab**: [Click Here](https://colab.research.google.com/drive/144aaBAgmt-elK7ikpWgPy038qiQOXrSR#scrollTo=H0B_dYPRFdIp)
+### 🔧 Full Training & Deployment:
+If you'd like to see the full training process and model deployment, open this Colab notebook:  
+👉 [Training + Deployment Notebook](https://colab.research.google.com/drive/144aaBAgmt-elK7ikpWgPy038qiQOXrSR#scrollTo=H0B_dYPRFdIp)
+
+### ✅ **Quick Test (No Training Required)**
+To instantly try the pre-trained model and web app without running any training code, open this Colab notebook:  
+👉 [Test-Only Colab](https://colab.research.google.com/drive/1ZdEdr-OeuPQQR9OriMckG2UUpx-EI7-O?usp=sharing)
+
+⚠️ **Important:** Before running the notebook, go to **Runtime > Change runtime type** and select **GPU** as the hardware accelerator for faster and more stable performance.
+
+This version:
+- Automatically downloads the trained model and template files
+- Launches the Flask web application with a user-friendly interface
+- Lets you enter text and instantly see the top 3 predicted categories with probabilities
+
+No setup, training, or configuration needed — just run the cells and test the model. 🚀
 
 ---
 ## 📌 Mini Report
@@ -52,8 +67,8 @@ After training, the model was evaluated on the validation set. Here are the key 
 A **Flask web application** was built to allow users to classify text in real time. 
 
 **Features:**
-✅ **User Input:** A text box for entering text
-✅ **Inference Button:** A button to send input for classification
+✅ **User Input:** A text box for entering text  
+✅ **Inference Button:** A button to send input for classification  
 ✅ **Output Display:** The app shows the **top 3 predicted categories** with confidence scores.
 
 **How It Works:**
@@ -70,22 +85,19 @@ This project can be run **on Google Colab** (recommended) or **locally on a mach
 
 ## 📌 Running on Google Colab
 ### **1️⃣ Open the Colab Notebook**
-- Use the provided Colab link above.
+- Use either the [Training Notebook](https://colab.research.google.com/drive/144aaBAgmt-elK7ikpWgPy038qiQOXrSR#scrollTo=H0B_dYPRFdIp) or the [Test-Only Notebook](https://colab.research.google.com/drive/1ZdEdr-OeuPQQR9OriMckG2UUpx-EI7-O?usp=sharing).
 
-### **2️⃣ Enable GPU for Faster Training**
+### **2️⃣ Enable GPU for Faster Performance**
 - Go to **Runtime > Change runtime type**
 - Set **Hardware Accelerator** to **GPU**
 
-### **3️⃣ Run Training and Evaluation Cells**
-- Execute all the cells in the notebook to:
-  ✅ Train DistilBERT
-  ✅ Evaluate model performance
-  ✅ Deploy the web app
+### **3️⃣ Run the Web App Cell**
+- If using the test-only version, no training is required
+- The web app will automatically download the model and start up
 
-### **4️⃣ Run the Web Application**
-- Execute the **Flask Web App** cell
-- It will display a **public ngrok URL**
-- Open the URL and test text classification!
+### **4️⃣ Use the Web Interface**
+- Enter text into the input box
+- Click **"Classify"** to view top predictions
 
 ---
 ## 📌 Running Locally (Manual Setup)
@@ -105,7 +117,7 @@ This saves the model as `distilbert_newsgroup_model/`.
 
 ### **3️⃣ Run the Web App Locally**
 ```bash
-python webapp.py
+python app.py
 ```
 - Open `http://127.0.0.1:5000/` in a browser.
 - Enter text, click **"Classify"**, and view predictions!
